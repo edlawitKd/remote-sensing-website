@@ -1,0 +1,52 @@
+import React, { useState } from "react";
+import {  FaPhoneAlt, FaEnvelope } from "react-icons/fa";
+
+export default function StaffCard({
+  image,
+  name,
+  specialization,
+  biography,
+  email,
+  phone_no,
+  publication
+}) {
+  const [showDetail, setShowDetail] = useState(false);
+
+  return (
+    <div className="bg-white shadow-md rounded-xl p-6 hover:shadow-lg transition duration-300 text-left">
+      <img
+        src={image || "../image/default-profile.jpeg"}
+        alt={name}
+        className="w-32 h-32 object-cover rounded-full mx-auto mb-4"
+      />
+      <h3 className="text-xl font-semibold text-center mb-1">{name}</h3>
+      <p className="text-center text-gray-600 mb-4"><strong>Specialization:</strong> {specialization}</p>
+
+      <button
+        className={`w-full px-4 py-2 mb-4 rounded-md font-medium transition ${
+          showDetail
+            ? "text-[#DD994D] border border-[#204E67] hover:bg-gray-100"
+            : "bg-[#204E67] text-white hover:bg-[#16394e]"
+        }`}
+        onClick={() => setShowDetail(!showDetail)}
+      >
+        {showDetail ? "Hide Detail" : "View Detail"}
+      </button>
+
+      {showDetail && (
+        <div className="text-gray-700 space-y-3">
+          <p><strong>Biography:</strong> {biography}</p>
+          <div className="flex items-center gap-2">
+            <FaEnvelope className="text-[#DD994D]" />
+            <p>{email}</p>
+          </div>
+          <div className="flex items-center gap-2">
+            <FaPhoneAlt className="text-[#DD994D]" />
+            <p>{phone_no}</p>
+          </div>
+          <p><strong>Publication:</strong> {publication}</p>
+        </div>
+      )}
+    </div>
+  );
+}

@@ -4,7 +4,7 @@ import {  FaPhoneAlt, FaEnvelope } from "react-icons/fa";
 export default function StaffCard({
   image,
   name,
-  specialization,
+  expertise,
   biography,
   email,
   phone_no,
@@ -20,8 +20,16 @@ export default function StaffCard({
         className="w-32 h-32 object-cover rounded-full mx-auto mb-4"
       />
       <h3 className="text-xl font-semibold text-center mb-1">{name}</h3>
-      <p className="text-center text-gray-600 mb-4"><strong>Specialization:</strong> {specialization}</p>
-
+      <div className="flex flex-wrap gap-2 my-3">Experties:
+                        {expertise.slice(0, 3).map((expert, index) => (
+                          <span
+                            key={index}
+                            className="px-3 py-1 bg-[#DD994D] font-bold bg-opacity-10 text-[#DD994D] text-sm rounded-full"
+                          >
+                            {expert}
+                          </span>
+                        ))}
+                      </div>
       <button
         className={`w-full px-4 py-2 mb-4 rounded-md font-medium transition ${
           showDetail

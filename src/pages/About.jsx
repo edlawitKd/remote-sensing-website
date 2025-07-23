@@ -3,9 +3,18 @@ import React from "react"
 export default function About(){
     return(
         <section className="bg-gray-50">
-           <div className="max-w-6xl my-10 mx-auto text-center mb-12">
-             <h2 className="text-3xl font-bold text-[#204E67]">About Us</h2>
-           </div>
+           <section className="bg-[#204E67] text-white py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <h1 className="text-4xl lg:text-5xl font-bold mb-6">About Our Department</h1>
+            <p className="text-xl lg:text-2xl max-w-4xl mx-auto text-gray-200">
+              Advancing the frontiers of remote sensing science through innovative research, 
+              cutting-edge technology, and collaborative.
+            </p>
+          </div>
+        </div>
+      </section>
+      <section className="py-20">
            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
            <div className="card border-t-4 bg-white shadow-md border-t-[#DD994D] rounded-lg p-6 hover:shadow-lg transition duration-300 text-center">
             <h3 className="text-xl font-semibold mb-4 text-[#204E67]">Our Vision</h3>
@@ -34,6 +43,7 @@ export default function About(){
              </div>
              </div>
            </div>
+           </section>
         </section>
     )
 }

@@ -3,9 +3,9 @@ import Explore from "../components/Explore";
 
 export default function Home() {
   const stats = [
-    { number: "50+", label: "Research Projects" },
+    { number: "50+", label: "Research & Projects" },
     { number: "50+", label: "Publications" },
-    { number: "15+", label: "Expert Staff" },
+    { number: "8+", label: "Expert Staff" },
     { number: "5+", label: "Years Experience" },
   ];
 
@@ -57,9 +57,9 @@ export default function Home() {
       {/* Image Section */}
       <div className="bg-gray-200 rounded-xl flex items-center justify-center py-10">
         <img
-          src="/image/world.png"
+          src="./image/world.png"
           alt="World map remote sensing illustration"
-          className=" rounded-xl w-72"
+          className=" rounded-xl w-72 hover:scale-95 delay-150 duration-100 "
         />
       </div>
     </main>

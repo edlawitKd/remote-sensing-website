@@ -15,6 +15,7 @@ function Navbar() {
     { name: "Sectors", path: "/sectors" },
     { name: "Product & Service", path: "/products" },
     { name: "Staff", path: "/staff" },
+    { name: "Contact Us", path: "/ContactUs"}
   ];
 
   return (

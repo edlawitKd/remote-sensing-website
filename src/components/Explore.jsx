@@ -14,19 +14,19 @@ export default function Explore() {
       title: "Projects",
       description: "Learn about our ongoing and past research projects.",
       icon: FaProjectDiagram,
-      link: "#/projects",
+      link: "/Sectors",
     },
     {
       title: "Capacity Building",
       description: "PhD, MSc, and training programs we offer.",
       icon: FaUsers,
-      link: "#/capacity",
+      link: "/Sectors",
     },
     {
       title: "Products & Services",
       description: "See the tools and services we provide.",
       icon: FaCogs,
-      link: "#/products",
+      link: "/Products",
     },
   ];
 

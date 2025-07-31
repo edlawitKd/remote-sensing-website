@@ -8,6 +8,7 @@ import Publications from "./pages/Publications";
 import Sectors from "./pages/Sectors";
 import Products from "./pages/Products"
 import Staff from "./pages/Staff"
+import ContactUs from "./pages/ContactUs"
 
 export default function App() {
   return (
@@ -20,6 +21,7 @@ export default function App() {
          <Route path="/Sectors" element={<Sectors />} />
          <Route path="/Products" element={<Products />} />
          <Route path="/Staff" element={<Staff />} />
+         <Route path="/ContactUs" element={<ContactUs/>} />
       </Routes>
      <Footer/>
      </>

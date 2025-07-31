@@ -50,10 +50,6 @@ export default function CapacityBuilding() {
                   <p><span className="font-medium">Duration:</span> {program.duration}</p>
                   <p><span className="font-medium">Max Participants:</span> {program.participants}</p>
                 </div>
-                <button className="mt-4 flex items-center text-[#DD994D] hover:text-[#DD994D]-dark transition-colors">
-                  Learn More
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </button>
               </div>
             ))}
           </div>

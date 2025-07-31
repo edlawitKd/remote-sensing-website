@@ -25,7 +25,7 @@ export default function CapacityBuilding() {
   return (
     <section className="bg-white py-16 px-6">
       <div className="max-w-6xl mx-auto text-center mb-12">
-        <h2 className="text-3xl font-bold text-[#204E67]">Consultancy Services</h2>
+        <h2 className="text-3xl lg:text-4xl font-bold text-[#204E67]">Consultancy Services</h2>
         <p className="text-gray-600 mt-4">Our department offers expert consultancy services across a range of sectors</p>
         <h3 className="text-lg text-[#204E67] font-semibold mt-4">Who We Consult</h3>
       </div>
@@ -53,6 +53,14 @@ export default function CapacityBuilding() {
                     <span>Global project experience</span>
                   </li>
                 </ul>
+                <div className="flex mt-5">
+              <a
+                href="/ContactUs"
+                className="inline-flex items-center bg-[#DD994D] text-[#204E67] px-6 py-3 rounded-lg font-medium hover:text-white transition-colors"
+              >
+                Request Consultancy Service
+              </a>
+                </div>
               </div>
             </div>
           </div>

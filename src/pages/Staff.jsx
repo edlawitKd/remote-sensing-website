@@ -20,7 +20,15 @@ const staffList = [
     phone_no: "+251987654321",
     publication: "MSc thesis on carbon flux estimation."
   },
-
+   {
+    name: "Ms. Elilita Kinfe",
+    expertise: ["Content Creater" , "Social-Media Manager"],
+    image: "../image/elu.jpg",
+    biography: "creative, video editer",
+    email: "elilitak45@gmail.com",
+    phone_no: "+251942406432",
+    publication: " "
+  },
 ];
 
 export default function Staff() {

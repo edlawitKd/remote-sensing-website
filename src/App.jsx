@@ -4,9 +4,9 @@ import Footer from './components/Footer';
 import Navbar from './components/Navbar'; 
 import Home from "./pages/Home"; 
 import About from "./pages/About";
+import Mandate from "./pages/Mandate";
 import Publications from "./pages/Publications";
-import Sectors from "./pages/Sectors";
-import Products from "./pages/Products"
+import News from "./pages/News"
 import Staff from "./pages/Staff"
 import ContactUs from "./pages/ContactUs"
 
@@ -17,9 +17,9 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
+        <Route path="/Mandate" element={<Mandate />} />
         <Route path="/publications" element={<Publications />} />
-         <Route path="/Sectors" element={<Sectors />} />
-         <Route path="/Products" element={<Products />} />
+         <Route path="/News" element={<News />} />
          <Route path="/Staff" element={<Staff />} />
          <Route path="/ContactUs" element={<ContactUs/>} />
       </Routes>

@@ -24,7 +24,7 @@ export default function StaffCard({
                         {expertise.slice(0, 3).map((expert, index) => (
                           <span
                             key={index}
-                            className="px-3 py-1 bg-[#DD994D] font-bold bg-opacity-10 text-[#DD994D] text-sm rounded-full"
+                            className="px-3 py-1 bg-primary font-bold bg-opacity-10 text-primary text-sm rounded-full"
                           >
                             {expert}
                           </span>
@@ -33,8 +33,8 @@ export default function StaffCard({
       <button
         className={`w-full px-4 py-2 mb-4 rounded-md font-medium transition ${
           showDetail
-            ? "text-[#DD994D] border border-[#204E67] hover:bg-gray-100"
-            : "bg-[#204E67] text-white hover:bg-[#16394e]"
+            ? "text-primary border border-[#204E67] hover:bg-gray-100"
+            : "bg-secondary text-white hover:bg-[#16394e]"
         }`}
         onClick={() => setShowDetail(!showDetail)}
       >
@@ -45,11 +45,11 @@ export default function StaffCard({
         <div className="text-gray-700 space-y-3">
           <p><strong>Biography:</strong> {biography}</p>
           <div className="flex items-center gap-2">
-            <FaEnvelope className="text-[#DD994D]" />
+            <FaEnvelope className="text-primary" />
             <p>{email}</p>
           </div>
           <div className="flex items-center gap-2">
-            <FaPhoneAlt className="text-[#DD994D]" />
+            <FaPhoneAlt className="text-primary" />
             <p>{phone_no}</p>
           </div>
           <p><strong>Publication:</strong> {publication}</p>

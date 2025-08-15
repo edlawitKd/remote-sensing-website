@@ -30,12 +30,12 @@ export default function Products(){
         }
     ];
     return(
-        <section className="bg-gray-50">
-            <section className="bg-[#204E67] mb-12 text-white py-20">
+        <section className=" mt-5">
+            <section className="bg-gray-50 mb-12 text-secondary py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h1 className="text-4xl lg:text-5xl font-bold mb-6">Products & Services</h1>
-            <p className="text-xl lg:text-2xl max-w-4xl mx-auto text-gray-200">
+            <p className="text-xl lg:text-2xl max-w-4xl mx-auto text-secondary">
               Our department develops innovative products and services 
               that apply our research to solve real-world challenges.
             </p>

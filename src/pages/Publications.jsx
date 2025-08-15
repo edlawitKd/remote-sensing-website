@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import PublicationCard from "../components/PublicationCard";
-
+import Products from "./Products";
 export default function Publications() {
   const [filter, setFilter] = useState("book");
   const [search, setSearch] = useState("");
@@ -59,13 +59,13 @@ const sortedPapers = [...PaperData]
   .sort((a, b) => b.year - a.year);
 
   return (
-    <div>
-      <section className="bg-[#204E67] text-white py-20">
+    <div className="bg-gray-50">
+      <section className="bg-secondary text-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <h1 className="text-4xl lg:text-5xl font-bold mb-6">Publications</h1>
+            <h1 className="text-4xl lg:text-5xl font-bold mb-6">Publication and Outputs</h1>
             <p className="text-xl lg:text-2xl max-w-4xl mx-auto text-gray-200">
-              Explore our comprehensive collection of books, research papers, and technical publications 
+              Explore our comprehensive collection of books, research papers, service and products
               contributing to the advancement of remote sensing science.
             </p>
           </div>
@@ -78,8 +78,8 @@ const sortedPapers = [...PaperData]
           <button
             className={`px-6 py-2 rounded-md font-medium ${
               filter === "book"
-                ? "bg-[#204E67] text-[#DD994D]"
-                : "text-[#204E67] border border-[#204E67] hover:bg-gray-100"
+                ? "bg-secondary text-primary"
+                : "text-secondary border border-[#204E67] hover:bg-gray-100"
             }`}
             onClick={() => setFilter("book")}
           >
@@ -88,8 +88,8 @@ const sortedPapers = [...PaperData]
           <button
             className={`px-6 py-2 rounded-md font-medium ${
               filter === "paper"
-                ? "bg-[#204E67] text-[#DD994D]"
-                : "text-[#204E67] border border-[#204E67] hover:bg-gray-100"
+                ? "bg-secondary text-primary"
+                : "text-secondary border border-[#204E67] hover:bg-gray-100"
             }`}
             onClick={() => setFilter("paper")}
           >
@@ -123,6 +123,7 @@ const sortedPapers = [...PaperData]
             />
           ))}
         </section>
+        <Products />
       </div>
     </div>
   );

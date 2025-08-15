@@ -35,8 +35,8 @@ export default function Research() {
     <section id="research" className="py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-3xl lg:text-4xl font-bold text-[#204E67] mb-4">
-            Research & Projects
+          <h2 className="text-3xl lg:text-4xl font-bold text-secondary mb-4">
+            Research and developments (R&D)
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Conducting cutting-edge research projects that advance remote
@@ -47,7 +47,7 @@ export default function Research() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
           {/* Current Research Areas */}
           <div>
-            <h3 className="text-2xl font-bold text-[#204E67] mb-6">Current Research Areas</h3>
+            <h3 className="text-2xl font-bold text-secondary mb-6">Current Research Areas</h3>
             <div className="space-y-4">
               {[
                 {
@@ -64,9 +64,9 @@ export default function Research() {
                 }
               ].map((area, i) => (
                 <div key={i} className="flex items-start space-x-3">
-                  <CheckCircle className="h-6 w-6 text-[#DD994D] mt-1" />
+                  <CheckCircle className="h-6 w-6 text-primary mt-1" />
                   <div>
-                    <h4 className="font-semibold text-[#204E67]">{area.title}</h4>
+                    <h4 className="font-semibold text-secondary">{area.title}</h4>
                     <p className="text-gray-600">{area.desc}</p>
                   </div>
                 </div>
@@ -82,8 +82,8 @@ export default function Research() {
                 onClick={() => setFilter("Active")}
                 className={`px-6 py-2 rounded-md font-medium ${
                   filter === "Active"
-                    ? "text-[#DD994D] bg-[#204E67]"
-                    : "text-[#204E67] border border-[#204E67] hover:bg-gray-100"
+                    ? "text-primary bg-secondary"
+                    : "text-secondary border border-[#204E67] hover:bg-gray-100"
                 }`}
               >
                 Active Projects
@@ -92,8 +92,8 @@ export default function Research() {
                 onClick={() => setFilter("Completed")}
                 className={`px-6 py-2 rounded-md font-medium ${
                   filter === "Completed"
-                    ? "text-[#DD994D] bg-[#204E67]"
-                    : "text-[#204E67] border border-[#204E67] hover:bg-gray-100"
+                    ? "text-primary bg-secondary"
+                    : "text-secondary border border-[#204E67] hover:bg-gray-100"
                 }`}
               >
                 Developed Projects

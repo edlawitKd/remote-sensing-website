@@ -11,11 +11,11 @@ function Navbar() {
   const navLinks = [
     { name: "Home", path: "/" },
     { name: "About", path: "/about" },
+    { name: "Mandate", path: "/mandate" },
     { name: "Publications", path: "/publications" },
-    { name: "Sectors", path: "/sectors" },
-    { name: "Product & Service", path: "/products" },
+    { name: "News", path: "/news" },
     { name: "Staff", path: "/staff" },
-    { name: "Contact Us", path: "/ContactUs"}
+    { name: "Contact Us", path: "/contactUs" }
   ];
 
   return (
@@ -24,9 +24,9 @@ function Navbar() {
         <div className="flex justify-between items-center py-4">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
-            <Satellite className="h-8 w-8 text-[#204E67]" />
+            <Satellite className="h-8 w-8 text-secondary" />
             <div>
-              <h1 className="text-xl font-bold text-[#204E67]">Remote Sensing</h1>
+              <h1 className="text-xl font-bold text-secondary">Remote Sensing</h1>
               <p className="text-sm text-gray-600">Department</p>
             </div>
           </Link>
@@ -39,8 +39,8 @@ function Navbar() {
                   to={item.path}
                   className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
                     isActive(item.path)
-                      ? "text-[#DD994D] bg-gray-100"
-                      : "text-[#204E67] hover:text-[#DD994D] hover:bg-gray-50"
+                      ? "text-primary bg-gray-100"
+                      : "text-secondary hover:text-primary hover:bg-gray-50"
                   }`}
                 >
                   {item.name}
@@ -53,7 +53,7 @@ function Navbar() {
           <div className="lg:hidden">
             <button
               type="button"
-              className="text-[#204E67] hover:text-[#DD994D] transition-colors"
+              className="text-secondary hover:text-primary transition-colors"
               onClick={() => setIsOpen(!isOpen)}
             >
               {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -71,10 +71,10 @@ function Navbar() {
                     to={item.path}
                     className={`block px-3 py-2 rounded-md text-sm font-medium transition-colors ${
                       isActive(item.path)
-                        ? "text-[#DD994D] bg-gray-100"
-                        : "text-[#204E67] hover:text-[#DD994D] hover:bg-gray-50"
+                        ? "text-primary bg-gray-100"
+                        : "text-secondary hover:text-primary hover:bg-gray-50"
                     }`}
-                    onClick={() => setIsOpen(false)} // closes menu after clicking
+                    onClick={() => setIsOpen(false)}
                   >
                     {item.name}
                   </Link>

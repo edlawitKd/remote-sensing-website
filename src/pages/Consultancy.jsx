@@ -23,7 +23,7 @@ export default function CapacityBuilding() {
   ];
 
   return (
-    <section className="bg-white py-16 px-6">
+    <section className="bg-gray-50 py-16 px-6">
       <div className="max-w-6xl mx-auto text-center mb-12">
         <h2 className="text-3xl lg:text-4xl font-bold text-secondary">Consultancy Services</h2>
         <p className="text-gray-600 mt-4">Our department offers expert consultancy services across a range of sectors</p>

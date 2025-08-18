@@ -1,104 +1,74 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import PublicationCard from "../components/PublicationCard";
 import Products from "./Products";
+
 export default function Publications() {
-  const [filter, setFilter] = useState("book");
+  const [filter, setFilter] = useState("Book");
   const [search, setSearch] = useState("");
+  const [publicationData, setPublicationData] = useState([]);
+  const [error, setError] = useState(null);
 
-  const BookData = [
-    {
-      id: 1,
-      type: "Book",
-      title: "Advanced Research Methods in Environmental Science",
-      authors: "Dr. Abebe, Selomon",
-      year: 2015,
-      link: "https://example.com/book1.pdf",
-    },
-    {
-      id: 2,
-      type: "Book",
-      title: "Effects of Climate Change",
-      authors: "Dr. Melaku, Selomon",
-      year: 2016,
-      link: "https://example.com/book2.pdf",
-    },
-    {
-      id: 3,
-      type: "Book",
-      title: "Urban Planning Strategies",
-      authors: "Dr. Selomon",
-      year: 2017,
-      link: "https://example.com/book3.pdf",
-    },
-  ];
+  useEffect(() => {
+    axios
+      .get("http://127.0.0.1:8000/publications/publication/") 
+      .then((res) => setPublicationData(res.data))
+      .catch((err) => {
+        console.error(err);
+        setError("Failed to load publications.");
+      });
+  }, []);
 
-  const PaperData = [
-    {
-      id: 1,
-      type: "Paper",
-      title: "Advanced Methods in Science",
-      authors: "Dr. Abebe, Selomon",
-      year: 2015,
-      link: "https://example.com/paper1.pdf",
-    },
-    {
-      id: 2,
-      type: "Paper",
-      title: "Research Methods in Environmental",
-      authors: "Dr. Abebe, Selomon",
-      year: 2015,
-      link: "https://example.com/paper2.pdf",
-    },
-  ];
-
- const sortedBooks = [...BookData].sort((a, b) => b.year - a.year);
-const sortedPapers = [...PaperData]
-  .filter((paper) =>
-    paper.title.toLowerCase().includes(search.toLowerCase())
-  )
-  .sort((a, b) => b.year - a.year);
+  // Filter and sort data based on type and search
+  const filteredData = publicationData
+    .filter((item) => item.type === filter)
+    .filter((item) =>
+      filter === "Paper"
+        ? item.title.toLowerCase().includes(search.toLowerCase())
+        : true
+    )
+    .sort((a, b) => b.year - a.year); // Sort newest first
 
   return (
     <div className="bg-gray-50">
+      {/* Hero Section */}
       <section className="bg-secondary text-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <h1 className="text-4xl lg:text-5xl font-bold mb-6">Publication and Outputs</h1>
+            <h1 className="text-4xl lg:text-5xl font-bold mb-6">
+              Publications and Outputs
+            </h1>
             <p className="text-xl lg:text-2xl max-w-4xl mx-auto text-gray-200">
-              Explore our comprehensive collection of books, research papers, service and products
-              contributing to the advancement of remote sensing science.
+              Explore our comprehensive collection of books, research papers,
+              service, and products contributing to the advancement of remote
+              sensing science.
             </p>
+            {error && <p className="text-red-500 mt-4">{error}</p>}
           </div>
         </div>
       </section>
 
+      {/* Filter & Search */}
       <div className="px-6 py-10 max-w-7xl mx-auto">
         {/* Filter Buttons */}
         <div className="flex justify-center gap-4 mb-6">
-          <button
-            className={`px-6 py-2 rounded-md font-medium ${
-              filter === "book"
-                ? "bg-secondary text-primary"
-                : "text-secondary border border-[#204E67] hover:bg-gray-100"
-            }`}
-            onClick={() => setFilter("book")}
-          >
-            Books
-          </button>
-          <button
-            className={`px-6 py-2 rounded-md font-medium ${
-              filter === "paper"
-                ? "bg-secondary text-primary"
-                : "text-secondary border border-[#204E67] hover:bg-gray-100"
-            }`}
-            onClick={() => setFilter("paper")}
-          >
-            Papers
-          </button>
+          {["Book", "Paper"].map((type) => (
+            <button
+              key={type}
+              className={`px-6 py-2 rounded-md font-medium ${
+                filter === type
+                  ? "bg-secondary text-primary"
+                  : "text-secondary border border-[#204E67] hover:bg-gray-100"
+              }`}
+              onClick={() => setFilter(type)}
+            >
+              {type}s
+            </button>
+          ))}
         </div>
 
-        {/* Search Bar (only visible when 'paper' is selected) */}
-        {filter === "paper" && (
+        {/* Search Bar (only for Papers) */}
+        {filter === "Paper" && (
           <div className="mb-6 max-w-md mx-auto">
             <input
               type="text"
@@ -112,7 +82,7 @@ const sortedPapers = [...PaperData]
 
         {/* Publication List */}
         <section className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-          {(filter === "book" ? sortedBooks : sortedPapers).map((item) => (
+          {filteredData.map((item) => (
             <PublicationCard
               key={item.id}
               type={item.type}
@@ -123,6 +93,7 @@ const sortedPapers = [...PaperData]
             />
           ))}
         </section>
+
         <Products />
       </div>
     </div>

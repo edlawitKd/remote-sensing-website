@@ -1,7 +1,25 @@
-import React from "react";
-import { Zap, Users, Globe } from "lucide-react"; // Importing icons
+import React,{useState,useEffect} from "react";
+import { Zap, Users, Globe } from "lucide-react"; 
+import axios from "axios";
 
 export default function About() {
+  const [aboutData, setAboutData]=useState(null);
+
+  useEffect(() => {
+    axios.get("http://127.0.0.1:8000/about/") 
+      .then((res) => {
+        if (res.data.length > 0) {
+          setAboutData(res.data[0]); 
+        }
+      })
+      .catch((err) => console.error(err));
+  }, []);
+
+  if (!aboutData) {
+    return <p className="text-center py-20">Loading About Page...</p>;
+  }
+
+
   return (
     <section className="bg-gray-50">
       {/* Hero Section */}
@@ -19,26 +37,20 @@ export default function About() {
         </div>
       </section>
 
-      {/* Vision, Mission, Resources */}
+      {/* Vision, Mission,Core Values, Resources */}
       <section className="py-20">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           
           {/* Vision */}
           <div className="card border-t-4 bg-white shadow-md border-t-[#DD994D] rounded-lg p-6 hover:shadow-lg transition duration-300 text-center">
             <h3 className="text-xl font-semibold mb-4 text-secondary">Our Vision</h3>
-            <p className="text-gray-700">
-              To be a national leader in geospatial science and remote sensing, 
-              advancing data-driven solutions for sustainable development.
-            </p>
+            <p className="text-gray-700"> {aboutData.vision} </p>
           </div>
 
           {/* Mission */}
           <div className="card border-t-4 bg-white shadow-md border-t-[#DD994D] rounded-lg p-6 hover:shadow-lg transition duration-300 text-center">
             <h3 className="text-xl font-semibold mb-4 text-secondary">Our Mission</h3>
-            <p className="text-gray-700">
-              To conduct innovative geospatial research, provide capacity-building programs,
-              and deliver remote sensing solutions for sustainable development and decision-making.
-            </p>
+            <p className="text-gray-700"> {aboutData.mission}</p>
           </div>
 
           {/* Core Values */}
@@ -63,20 +75,12 @@ export default function About() {
           {/* Resources */}
           <div className="card border-t-4 bg-white shadow-md border-t-[#DD994D] rounded-lg p-6 hover:shadow-lg transition duration-300 text-center">
             <h3 className="text-xl font-semibold mb-4 text-secondary">Our Resources</h3>
-
-            <h5 className="text-primary font-semibold mb-2 mt-4">Technology & Equipment</h5>
-            <ul className="text-gray-700 list-disc list-inside text-left space-y-2">
-              <li>Satellite imagery archives</li>
-              <li>Drone fleets for aerial surveys</li>
-              <li>High-resolution GIS workstations</li>
-              <li>Specialized remote sensing software</li>
-            </ul>
-
-            <h5 className="text-primary font-semibold mb-2 mt-4">Research Facilities</h5>
-            <ul className="text-gray-700 list-disc list-inside text-left space-y-2">
-              <li>Remote sensing laboratories</li>
-              <li>Image processing and data analysis centers</li>
-            </ul>
+            {aboutData.resources.map((resource)=>(
+              <div key={resource.key} className="mb-6">
+                <h5 className="text-primary font-semibold mb-2">{resource.title}</h5>
+                <p className="text-gray-700">{resource.description}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>

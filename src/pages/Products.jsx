@@ -8,7 +8,7 @@ export default function Products(){
             Icon: FaLandmark,
             title: "Tourism Monitoring",
             description: "Track tourism activities and ....",
-            link :"https://react.dev/"
+            link :""
         },
          {
             Icon: FaBriefcase,

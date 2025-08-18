@@ -1,10 +1,22 @@
-import React from "react";
-import { MapPinIcon, PhoneIcon, MailIcon, SendIcon, ClockIcon } from "lucide-react";
+import React, { useState } from "react";
+import axios from "axios";
+import { MapPin, Phone, Mail, Send, Clock } from "lucide-react";
 
 export default function ContactUs() {
+  const [success, setSuccess] = useState(null);
+
   function sendMessage(formData) {
     const data = Object.fromEntries(formData);
-    console.log(data);
+
+    axios.post("http://127.0.0.1:8000/contact/messages/", data)
+      .then((res) => {
+        console.log("Message sent:", res.data);
+        setSuccess("Message sent successfully!");
+      })
+      .catch((err) => {
+        console.error("Error sending message:", err);
+        setSuccess("Failed to send message. Please try again.");
+      });
   }
 
   return (
@@ -22,7 +34,7 @@ export default function ContactUs() {
           <h2 className="text-2xl text-secondary font-bold mb-6">Department Information</h2>
           <div className="space-y-6 text-gray-700">
             <div className="flex items-start space-x-3">
-              <MapPinIcon className="w-6 h-6 text-primary mt-1" />
+              <MapPin className="w-6 h-6 text-primary mt-1" />
               <div>
                 <h3 className="font-semibold">Address</h3>
                 <p>
@@ -33,9 +45,8 @@ export default function ContactUs() {
                 </p>
               </div>
             </div>
-
             <div className="flex items-start space-x-3">
-              <PhoneIcon className="w-6 h-6 text-primary mt-1" />
+              <Phone className="w-6 h-6 text-primary mt-1" />
               <div>
                 <h3 className="font-semibold">Phone</h3>
                 <p>
@@ -44,17 +55,15 @@ export default function ContactUs() {
                 </p>
               </div>
             </div>
-
             <div className="flex items-start space-x-3">
-              <MailIcon className="w-6 h-6 text-primary mt-1" />
+              <Mail className="w-6 h-6 text-primary mt-1" />
               <div>
                 <h3 className="font-semibold">Email</h3>
                 <p>remoteSensing@gmail.com</p>
               </div>
             </div>
-
             <div className="flex items-start space-x-3">
-              <ClockIcon className="w-6 h-6 text-primary mt-1" />
+              <Clock className="w-6 h-6 text-primary mt-1" />
               <div>
                 <h3 className="font-semibold">Office Hours</h3>
                 <p>
@@ -63,13 +72,8 @@ export default function ContactUs() {
                 </p>
               </div>
             </div>
-
             <div className="mt-8 h-64 bg-gray-200 rounded-lg overflow-hidden">
-              <img
-                src="/image/map-location.png"
-                alt="Map Location"
-                className="w-full h-full object-cover"
-              />
+              <img src="/image/map-location.png" alt="Map Location" className="w-full h-full object-cover" />
             </div>
           </div>
         </div>
@@ -77,6 +81,7 @@ export default function ContactUs() {
         {/* Contact Form */}
         <div className="bg-white rounded-lg shadow-md p-8">
           <h2 className="text-2xl text-secondary font-bold mb-6">Send Us a Message</h2>
+            {success && <p className="mt-4 text-green-500 mb-3">{success}</p>}
           <form
             className="flex flex-col space-y-4"
             onSubmit={(e) => {
@@ -85,43 +90,18 @@ export default function ContactUs() {
               e.target.reset();
             }}
           >
-            <input
-              type="text"
-              name="name"
-              placeholder="Your Name"
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#DD994D]"
-              required
-            />
-            <input
-              type="email"
-              name="email"
-              placeholder="Your Email"
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#DD994D]"
-              required
-            />
-            <select
-              name="subject"
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#DD994D]"
-              required
-            >
+            <input type="text" name="name" placeholder="Your Name" className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#DD994D]" required />
+            <input type="email" name="email" placeholder="Your Email" className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#DD994D]" required />
+            <select name="subject" className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#DD994D]" required>
               <option value="">Select Subject</option>
               <option value="General Inquiry">General Inquiry</option>
               <option value="Student Information">Student Information</option>
               <option value="Consultancy Service">Consultancy Service</option>
               <option value="Other">Other</option>
             </select>
-            <textarea
-              name="message"
-              placeholder="Your Message"
-              rows={5}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#DD994D]"
-              required
-            />
-            <button
-              type="submit"
-              className="flex items-center justify-center gap-2 bg-secondary text-white px-6 py-3 rounded-lg hover:bg-primary transition duration-300"
-            >
-              Send Message <SendIcon size={18} />
+            <textarea name="message" placeholder="Your Message" rows={5} className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#DD994D]" required />
+            <button type="submit" className="flex items-center justify-center gap-2 bg-secondary text-white px-6 py-3 rounded-lg hover:bg-primary transition duration-300">
+              Send Message <Send size={18} />
             </button>
           </form>
         </div>

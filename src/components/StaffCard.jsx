@@ -56,7 +56,7 @@ export default function StaffCard({
                 rel="noopener noreferrer"
                 className="text-primary hover:text-secondary transition-colors p-2"
               >
-                <FaLinkedin className="h-5 w-5" />
+                <FaLinkedin className="h-6 w-6" />
               </a>
             </div>
           )}

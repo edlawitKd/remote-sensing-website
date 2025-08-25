@@ -9,9 +9,13 @@ export default function Publications() {
   const [publicationData, setPublicationData] = useState([]);
   const [error, setError] = useState(null);
 
+  // Load More state
+  const [visibleCount, setVisibleCount] = useState(6); // initial items to show
+  const increment = 6; // how many more to show on click
+
   useEffect(() => {
     axios
-      .get("http://127.0.0.1:8000/publications/publication/") 
+      .get("http://127.0.0.1:8000/publications/publication/")
       .then((res) => setPublicationData(res.data))
       .catch((err) => {
         console.error(err);
@@ -19,7 +23,7 @@ export default function Publications() {
       });
   }, []);
 
-  // Filter and sort data based on type and search
+  // Filter, search, and sort
   const filteredData = publicationData
     .filter((item) => item.type === filter)
     .filter((item) =>
@@ -27,7 +31,15 @@ export default function Publications() {
         ? item.title.toLowerCase().includes(search.toLowerCase())
         : true
     )
-    .sort((a, b) => b.year - a.year); // Sort newest first
+    .sort((a, b) => b.year - a.year);
+
+  // Reset visible count when filter/search changes
+  useEffect(() => {
+    setVisibleCount(increment);
+  }, [filter, search]);
+
+  // Items to show
+  const visibleItems = filteredData.slice(0, visibleCount);
 
   return (
     <div className="bg-gray-50">
@@ -82,7 +94,7 @@ export default function Publications() {
 
         {/* Publication List */}
         <section className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-          {filteredData.map((item) => (
+          {visibleItems.map((item) => (
             <PublicationCard
               key={item.id}
               type={item.type}
@@ -93,6 +105,18 @@ export default function Publications() {
             />
           ))}
         </section>
+
+        {/* Load More Button */}
+        {visibleCount < filteredData.length && (
+          <div className="flex justify-center mt-6">
+            <button
+              onClick={() => setVisibleCount((prev) => prev + increment)}
+              className="px-6 py-2 bg-secondary text-primary rounded-md font-medium hover:bg-[#1b3c4f]"
+            >
+              Load More
+            </button>
+          </div>
+        )}
 
         <Products />
       </div>

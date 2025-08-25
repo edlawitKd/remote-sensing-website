@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { ArrowRight } from "lucide-react";
 import axios from "axios";
-import { Link } from "react-router-dom";
 
 export default function CapacityBuilding() {
   const [trainingPrograms, setTrainingPrograms] = useState([]);
@@ -57,24 +56,23 @@ export default function CapacityBuilding() {
               </div>
             </div>
           ))}
-
-          {/* Call-to-action card */}
-          <div className="bg-secondary text-white rounded-xl p-8 text-center flex flex-col justify-center">
-            <h3 className="text-2xl text-primary font-bold mb-4">
+        </div>
+      )}
+      {/* Call-to-action card */}
+           <div className="bg-secondary mt-6 text-white rounded-xl p-8 lg:p-12 text-center">
+         <h3 className="text-2xl text-primary font-bold mb-4">
               Ready to Enhance Your Skills?
             </h3>
             <p className="text-xl mb-6">
               Join our next training program and advance your remote sensing expertise.
             </p>
-            <Link
-              to="/contact"
-              className="px-8 py-3 bg-primary text-secondary hover:bg-gray-100 font-medium rounded-lg transition-colors"
-            >
+            <a
+                href="/ContactUs"
+               className="px-8 py-3 bg-primary text-secondary hover:bg-gray-100 font-medium rounded-lg transition-colors"
+              >
               Request for Training
-            </Link>
+            </a>
           </div>
-        </div>
-      )}
     </section>
   );
 }

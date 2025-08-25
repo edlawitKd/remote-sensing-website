@@ -12,7 +12,7 @@ function Navbar() {
     { name: "Home", path: "/" },
     { name: "About", path: "/about" },
     { name: "Mandate", path: "/mandate" },
-    { name: "Publications", path: "/publications" },
+    { name: "Publications And Output", path: "/publications" },
     { name: "News", path: "/news" },
     { name: "Staff", path: "/staff" },
     { name: "Contact Us", path: "/contactUs" }

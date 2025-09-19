@@ -3,7 +3,7 @@ import { Satellite, Mail, Phone, MapPin, Facebook, Twitter, Linkedin } from 'luc
 
 const Footer = () => {
   return (
-    <footer className="bg-secondary mt-8 text-white">
+    <footer className="bg-secondary mt-12 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Main Footer */}
         <div className="py-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -51,7 +51,7 @@ const Footer = () => {
             <h4 className="text-lg font-semibold mb-4"><a href="/contactUs">Contact Us</a></h4>
             <div className="space-y-3 text-gray-300">
               <div className="flex items-start space-x-3">
-                <MapPin className="h-5 w-5 text-primary mt-0.5" />
+                <a href="/contactUs"><MapPin className="h-5 w-5 text-primary mt-0.5" /></a>
                 <div>
                   <p>Remote Sensing Department</p>
                   <p>SSGI</p>

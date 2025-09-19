@@ -14,30 +14,23 @@ export default function StaffCard({
   const [showDetail, setShowDetail] = useState(false);
 
   return (
-    <div className="bg-white shadow-md rounded-xl p-6 hover:shadow-lg transition duration-300 text-left">
+    <div className="bg-white shadow-md rounded-xl p-6 hover:shadow-lg transition duration-300 flex flex-col h-full mb-10">
+   {/* Staff Image */}
       <img
         src={image || "/default-profile.jpeg"}
         alt={name || "Staff Member"}
         className="w-32 h-32 object-cover rounded-full mx-auto mb-4"
       />
+
+      {/* Name & Position */}
       <h3 className="text-xl font-semibold text-center mb-1">{name || "No Name"}</h3>
-      <p className="text-gray-600 mb-3 p-3">
+      <p className="text-gray-600 mb-3 text-center">
         <strong>Position:</strong> {position || "No position"}
       </p>
 
-      <button
-        className={`w-full px-4 py-2 mb-4 rounded-md font-medium transition ${
-          showDetail
-            ? "text-primary border border-[#204E67] hover:bg-gray-100"
-            : "bg-secondary text-white hover:bg-[#16394e]"
-        }`}
-        onClick={() => setShowDetail(!showDetail)}
-      >
-        {showDetail ? "Hide Detail" : "View Detail"}
-      </button>
-
+      {/* Details */}
       {showDetail && (
-        <div className="text-gray-700 space-y-3">
+        <div className="text-gray-700 space-y-3 flex-grow">
           <p><strong>Biography:</strong> {biography || "No biography available."}</p>
           <div className="flex items-center gap-2">
             <FaEnvelope className="text-primary" />
@@ -62,6 +55,20 @@ export default function StaffCard({
           )}
         </div>
       )}
+
+      {/* Fixed Button at Bottom */}
+      <div className="mt-auto pt-4 border-t border-gray-100">
+        <button
+          className={`w-full px-4 py-2 rounded-md font-medium transition ${
+            showDetail
+              ? "text-primary border border-[#204E67] hover:bg-gray-100"
+              : "bg-secondary text-white hover:bg-[#16394e]"
+          }`}
+          onClick={() => setShowDetail(!showDetail)}
+        >
+          {showDetail ? "Hide Detail" : "View Detail"}
+        </button>
+      </div>
     </div>
   );
 }

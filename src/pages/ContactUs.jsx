@@ -72,9 +72,31 @@ export default function ContactUs() {
                 </p>
               </div>
             </div>
-            <div className="mt-8 h-64 bg-gray-200 rounded-lg overflow-hidden">
-              <img src="/image/map-location.png" alt="Map Location" className="w-full h-full object-cover" />
-            </div>
+           {/* OpenStreetMap Integration */}
+          <div className="mt-8 h-64 bg-gray-200 rounded-lg overflow-hidden">
+  <iframe
+    width="100%"
+    height="100%"
+    frameBorder="0"
+    scrolling="no"
+    src="https://www.openstreetmap.org/export/embed.html?bbox=38.761417%2C9.02002492%2C38.762928666668316%2C9.020001082935485&layer=mapnik&marker=9.0202%2C38.7635"
+  style={{ border: "1px solid black" }}
+  ></iframe>
+</div>
+
+{/* Link to full OpenStreetMap page */}
+<div className="text-center mt-2">
+  <small>
+    <a 
+       href="https://www.openstreetmap.org/?mlat=9.0202&mlon=38.7635#map=16/9.0202/38.7635" 
+    target="_blank" 
+      rel="noopener noreferrer"
+      className="text-primary hover:underline"
+    >
+      View Larger Map
+    </a>
+  </small>
+</div>
           </div>
         </div>
 

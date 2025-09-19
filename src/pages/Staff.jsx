@@ -6,6 +6,7 @@ export default function Staff() {
   const [search, setSearch] = useState("");
   const [staffList, setStaffList] = useState([]);
   const [error, setError] = useState(null);
+  const [visibleCount, setVisibleCount] = useState(6); // 👈 show 6 initially
 
   useEffect(() => {
     axios
@@ -21,6 +22,9 @@ export default function Staff() {
   const filteredStaff = staffList.filter((staff) =>
     staff.name?.toLowerCase().includes(search.toLowerCase())
   );
+
+  // Slice based on visible count
+  const visibleStaff = filteredStaff.slice(0, visibleCount);
 
   return (
     <section className="bg-gray-50 min-h-screen">
@@ -49,19 +53,19 @@ export default function Staff() {
 
       {/* Staff Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto px-4">
-        {filteredStaff && filteredStaff.length > 0 ? (
-          filteredStaff.map((staff) => (
+        {visibleStaff.length > 0 ? (
+          visibleStaff.map((staff) => (
             <StaffCard
-               key={staff.id}
-               image={staff.photo}
-               name={staff.name}
-               position={staff.position}
-               biography={staff.bio}
-               email={staff.email}
-               phone_no={staff.phone}
-               publication={staff.publication}
-               link={staff.link}
-             />
+              key={staff.id}
+              image={staff.photo}
+              name={staff.name}
+              position={staff.position}
+              biography={staff.bio}
+              email={staff.email}
+              phone_no={staff.phone}
+              publication={staff.publication}
+              link={staff.link}
+            />
           ))
         ) : (
           <p className="text-gray-600 col-span-full text-center">
@@ -69,6 +73,18 @@ export default function Staff() {
           </p>
         )}
       </div>
+
+      {/* Load More Button */}
+      {visibleCount < filteredStaff.length && (
+        <div className="text-center mt-10">
+          <button
+            onClick={() => setVisibleCount((prev) => prev + 6)} // 👈 show 6 more
+            className="px-6 py-2 bg-[#DD994D] text-white rounded-lg shadow hover:bg-[#c57e35] transition"
+          >
+            Load More
+          </button>
+        </div>
+      )}
     </section>
   );
 }

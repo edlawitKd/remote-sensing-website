@@ -43,13 +43,13 @@ export default function About() {
             {/* Vision */}
             <div className="card border-t-4 bg-white shadow-md border-t-[#DD994D] rounded-lg p-6 hover:shadow-lg transition duration-300 text-center">
               <h3 className="text-xl font-semibold mb-4 text-secondary">Our Vision</h3>
-              <p className="text-gray-700">{aboutData.vision}</p>
+              <p className="text-gray-700 text-justify" >{aboutData.vision}</p>
             </div>
 
             {/* Mission */}
             <div className="card border-t-4 bg-white shadow-md border-t-[#DD994D] rounded-lg p-6 hover:shadow-lg transition duration-300 text-center">
               <h3 className="text-xl font-semibold mb-4 text-secondary">Our Mission</h3>
-              <p className="text-gray-700">{aboutData.mission}</p>
+              <p className="text-gray-700 text-justify">{aboutData.mission}</p>
             </div>
 
             {/* Core Values */}
@@ -78,9 +78,9 @@ export default function About() {
       <section className="py-16 bg-gray-50">
         <div className="max-w-5xl mx-auto px-6">
           <h2 className="text-3xl font-bold text-primary mb-8">Our Resources</h2>
-          <div className="space-y-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6">
             {aboutData.resources?.map((resource) => (
-              <div key={resource.id} className="bg-white p-6 rounded-xl shadow">
+              <div key={resource.id} className="bg-white p-10 rounded-xl shadow">
                 <h3 className="text-xl font-semibold mb-3">{resource.title}</h3>
                 <ul className="list-disc list-inside text-gray-700 space-y-1">
                   {resource.items?.map((item) => (

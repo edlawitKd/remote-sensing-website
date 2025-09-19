@@ -39,11 +39,11 @@ export default function CapacityBuilding() {
                 <h3 className="text-xl font-semibold text-secondary">
                   {program.title}
                 </h3>
-                <span className="px-3 py-1 text-sm bg-primary bg-opacity-10 text-primary rounded-full">
+                <span className="px-5 lg:px-10 py-1 text-sm bg-primary bg-opacity-10 text-primary rounded-full whitespace-nowrap">
                   {program.level}
                 </span>
               </div>
-              <p className="text-gray-600 mb-4">{program.description}</p>
+              <p className="text-gray-600 mb-4 ">{program.description}</p>
               <div className="space-y-2 text-sm text-gray-500">
                 <p>
                   <span className="font-medium">Duration:</span>{" "}
